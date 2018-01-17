@@ -1,0 +1,334 @@
+
+<header>
+    <div class="container-fluid">
+
+        <a ui-sref="home" title="Tubbber Logo" class="logo" href="/en/">
+            <img ng-src="assets/images/LogoTubbber.svg" alt="Logo of Tubbber" title="Tubbber Logo" src="/assets/images/LogoTubbber.svg">
+        </a>
+
+        <div class="visible-xs visible-sm languagePickerMobile" style="text-align: right;">
+
+            <span class="flag flag-en"></span>
+
+            <select ng-model="languagePicker" ng-change="setCurrentLanguage(languagePicker)" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <!----><option ng-repeat="lang in activeLanguages" value="en" selected="selected">
+                    English
+                </option><!----><option ng-repeat="lang in activeLanguages" value="da">
+                    Dansk
+                </option><!----><option ng-repeat="lang in activeLanguages" value="de">
+                    Deutsch
+                </option><!----><option ng-repeat="lang in activeLanguages" value="gr">
+                    ελληνικά
+                </option><!----><option ng-repeat="lang in activeLanguages" value="es">
+                    Español
+                </option><!----><option ng-repeat="lang in activeLanguages" value="fi">
+                    Suomalainen
+                </option><!----><option ng-repeat="lang in activeLanguages" value="fr">
+                    Français
+                </option><!----><option ng-repeat="lang in activeLanguages" value="hr">
+                    Hrvatski
+                </option><!----><option ng-repeat="lang in activeLanguages" value="it">
+                    Italiano
+                </option><!----><option ng-repeat="lang in activeLanguages" value="nl">
+                    Nederlands
+                </option><!----><option ng-repeat="lang in activeLanguages" value="pl">
+                    Polskie
+                </option><!----><option ng-repeat="lang in activeLanguages" value="pt">
+                    Português
+                </option><!----><option ng-repeat="lang in activeLanguages" value="ru">
+                    Pусский
+                </option><!----><option ng-repeat="lang in activeLanguages" value="sv">
+                    Svenska
+                </option><!----><option ng-repeat="lang in activeLanguages" value="zh">
+                    中文
+                </option><!---->
+            </select>
+
+        </div>
+
+        <div class="visible-xs visible-sm languagePickerMobile" style="text-align: right;">
+
+            <span>HUF</span>
+
+            <select ng-model="currencyPicker" ng-change="setCurrentCurrency(currencyPicker)" class="ng-pristine ng-untouched ng-valid ng-empty"><option value="? undefined:undefined ?" selected="selected"></option>
+                <!----><option ng-repeat="currency in activeCurrencies" value="AUD" class="">
+                    Australian Dollar
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="BRL" class="">
+                    Brazil Real
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="CAD" class="">
+                    Canadian Dollar
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="CHF" class="">
+                    Swiss Franc
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="DKK" class="">
+                    Danish Krone
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="EUR" class="">
+                    Euro
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="GBP" class="">
+                    English Pounds
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="HKD" class="">
+                    Hong Kong Dollar
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="HUF" class="">
+                    Hungarian Forint
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="INR" class="">
+                    Indian Rupee
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="JPY" class="">
+                    Japanese Yen
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="MXN" class="">
+                    Mexican Peso
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="NOK" class="">
+                    Norwegian Krone
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="NZD" class="">
+                    New Zealand Dollar
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="SEK" class="">
+                    Swedish Krone
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="USD" class="">
+                    US Dollar
+                </option><!----><option ng-repeat="currency in activeCurrencies" value="ZAR" class="">
+                    South African Rand
+                </option><!---->
+            </select>
+
+        </div>
+
+        <div class="visible-xs visible-sm leftMobileMenu" ng-click="toggleMobileMenu()">
+            Menu <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+
+        <nav class="header-right" ng-class="{'menu-open':mobileMenu}">
+
+
+            <ul class="nav">
+
+
+                <!----><li ng-if="authenticated" class="hover">
+
+                    <a class="profile-menu-image hidden-xs hidden-sm" dropdown="" dropdown-list="#notifications">
+                        <span class="fa fa-bell-o fa-lg"></span> <!---->
+                    </a>
+
+                    <ul id="notifications">
+
+                        <!---->
+
+                        <!----><li class="hidden-xs hidden-sm" ng-if="notifications.length == 0">
+                            <a href="#" translate="">You don't have any recent notifications</a>
+                        </li><!---->
+
+                    </ul>
+
+                </li><!---->
+
+                <!---->
+
+                <!---->
+
+                <!----><li ng-if="authenticated" class="hover">
+
+                    <a class="profile-menu-image hidden-xs hidden-sm" dropdown="" dropdown-list="#user_list">
+
+                        <img ng-src="/assets/images/s2_default.png" alt="Xie Dongfeng profile picture" title="Xie" fallback-image="/assets/images/s2_default.png" src="/assets/images/s2_default-profile.png">
+
+                        Xie <i class="fa fa-chevron-down" aria-hidden="true"></i>
+
+                    </a>
+
+                    <ul id="user_list">
+
+                        <li>
+                            <a ui-sref="dashboard" href="/en/manager/dashboard">
+                                <i class="fa fa-home fa-fw"></i><span translate="">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="button_inbox" ng-show="authenticated">
+                            <a ui-sref="inbox" title="Inbox" href="/en/manager/messages">
+                                <i class="fa fa-envelope fa-fw"></i> <span translate="" translate-n="2" translate-plural="Messages">Messages</span>
+                            </a>
+                        </li>
+
+
+                        <li ng-show="currentUser.boats_count > 0" class="ng-hide">
+                            <a ui-sref="boats.manage" title="Boats" href="/en/manager/boats">
+                                <i class="fa fa-ship fa-fw"></i><span translate="" translate-n="2" translate-plural="Boats">Boats</span>
+                            </a>
+                        </li>
+
+
+                        <li ng-show="currentUser.boats_count > 0" class="ng-hide">
+                            <a ui-sref="discounts" title="Discounts" href="/en/manager/discounts">
+                                <i class="fa fa-bolt fa-fw"></i><span translate="" translate-n="2" translate-plural="Discounts">Discounts</span>
+                            </a>
+                        </li>
+
+                        <li ng-show="currentUser.boats_count > 0 || currentUser.bookings_count > 0" class="ng-hide">
+                            <a ui-sref="bookings" title="Boat trips" href="/en/manager/bookings">
+                                <i class="fa fa-suitcase fa-fw"></i><span translate="" translate-n="2" translate-plural="Bookings">Bookings</span>
+                            </a>
+                        </li>
+
+                        <li ng-show="currentUser.boats_count > 0 || currentUser.bookings_count > 0" class="ng-hide">
+                            <a ui-sref="profile.reviews" href="/en/manager/reviews">
+                                <i class="fa fa-comments-o fa-fw"></i> <span translate-n="2" translate-plural="Reviews">Reviews</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a ui-sref="account.settings" title="Settings" href="/en/manager/settings">
+                                <i class="fa fa-cog fa-fw"></i><span translate="">Settings</span>
+                            </a>
+                        </li>
+
+                        <li class="button_favorites starred">
+                            <a ui-sref="profile.favorites" title="Favorites" href="/en/manager/favorites">
+                                <i class="fa fa-star fa-fw"></i><span translate="">Favorites</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ui-sref="referrals" title="Invite a friend" class="hidden-xs hidden-sm" href="/en/referrals">
+                                <i class="fa fa-user-plus fa-fw"></i><span translate="">Invite a friend</span>
+                            </a>
+                        </li>
+
+                        <li class="hidden-xs hidden-sm">
+                            <a ui-sref="logout" href="/en/logout">
+                                <i class="fa fa-sign-out fa-fw"></i><span translate="">Log out</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li><!---->
+
+                <li class="language-picker hidden-xs hidden-sm hover">
+
+                    <div class="currentLanguage" dropdown="" dropdown-list="#languages">
+
+                        <span class="flag flag-en"></span>
+
+                    </div>
+
+                    <ul id="languages">
+                        <!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-en"></span>
+                            <span>English</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-da"></span>
+                            <span>Dansk</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-de"></span>
+                            <span>Deutsch</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-gr"></span>
+                            <span>ελληνικά</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-es"></span>
+                            <span>Español</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-fi"></span>
+                            <span>Suomalainen</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-fr"></span>
+                            <span>Français</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-hr"></span>
+                            <span>Hrvatski</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-it"></span>
+                            <span>Italiano</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-nl"></span>
+                            <span>Nederlands</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-pl"></span>
+                            <span>Polskie</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-pt"></span>
+                            <span>Português</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-ru"></span>
+                            <span>Pусский</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-sv"></span>
+                            <span>Svenska</span>
+                        </li><!----><li ng-click="setCurrentLanguage(lang.shortcode)" ng-repeat="lang in activeLanguages">
+                            <span class="flag flag-zh"></span>
+                            <span>中文</span>
+                        </li><!---->
+                    </ul>
+
+                </li>
+
+                <li class="language-picker hidden-xs hidden-sm">
+
+                    <div class="currentLanguage" dropdown="" dropdown-list="#currencies">
+
+                        <span>HUF</span>
+
+                    </div>
+
+                    <ul id="currencies">
+                        <!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Australian Dollar</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Brazil Real</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Canadian Dollar</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Swiss Franc</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Danish Krone</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Euro</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>English Pounds</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Hong Kong Dollar</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Hungarian Forint</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Indian Rupee</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Japanese Yen</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Mexican Peso</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Norwegian Krone</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>New Zealand Dollar</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>Swedish Krone</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>US Dollar</span><br>
+                        </li><!----><li ng-click="setCurrentCurrency(currency.shortcode)" ng-repeat="currency in activeCurrencies" class="">
+                            <span>South African Rand</span><br>
+                        </li><!---->
+                    </ul>
+
+                </li>
+
+                <!----><li ng-if="authenticated" class="mobileMenuFooter visible-xs visible-sm">
+
+                    <div class="mobileMenuFooterImage">
+
+                        <img ng-src="/images/users/pictures/s2_default.png" alt="Xie Dongfeng profile picture" title="Xie" fallback-image="/images/users/s2_default-profile.png" src="/images/users/s2_default-profile.png">
+                    </div>
+
+                    <p>
+                        <strong>Xie</strong>
+
+                    </p>
+
+                    <a ui-sref="logout" href="/en/logout">
+                        <i class="fa fa-sign-out fa-fw"></i><span translate="">Log out</span>
+                    </a>
+
+                </li><!---->
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>

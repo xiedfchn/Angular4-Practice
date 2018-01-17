@@ -1,0 +1,154 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-3 filterWrapper">
+      <div class="search-filters">
+        <ul>
+          <li>
+            <div class="row filterHeader">
+              <div class="col-xs-10 col-md-12">
+                <p class="search-filter-title" translate="">Boat Type</p>
+              </div>
+            </div>
+            <div class="row filterOptions">
+              <div class="col-xs-12">
+                <label ng-repeat="item in filter.boat_types" class="control control--radio">
+                        Sailing Yacht
+                        <input type="radio" name="boatType" ng-click="setKeyValue('boat_type_id', item.key)">
+                        <div class="control__indicator"></div>
+                        <span class="itemCount">142</span>
+                </label>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="row filterHeader">
+              <div class="col-xs-10 col-md-12">
+                <p class="search-filter-title" translate="">Boat Type</p>
+              </div>
+            </div>
+            <div class="row filterOptions">
+              <div class="col-xs-12">
+                <label ng-repeat="item in filter.boat_types" class="control control--radio">
+                        Sailing Yacht
+                        <input type="radio" name="boatType" ng-click="setKeyValue('boat_type_id', item.key)">
+                        <div class="control__indicator"></div>
+                        <span class="itemCount">142</span>
+                </label>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="search-results col-md-9">
+      <div class="search-result" ng-if="loc.results.length" ng-hide="loc.loading" *ngFor="let boat of boats">
+
+        <div class="col-xs-5 col-sm-4 image-search-page" image="https://livetubbber.s3.amazonaws.com/images/boat_images/s2_n3_1472567243.jpeg"
+          placeholder="https://livetubbber.s3.amazonaws.com/images/boat_images/s6_n3_1472567243.jpeg" fallback-image="" style="background-image: url(&quot;&quot;);">
+          <div class="placeholder">
+            <div style="padding-bottom: 66.6%;"></div>
+            <img src="https://livetubbber.s3.amazonaws.com/images/boat_images/s2_n3_1472567243.jpeg" class="loaded">
+            <img src="https://livetubbber.s3.amazonaws.com/images/boat_images/s6_n3_1472567243.jpeg" class="img-small"></div>
+        </div>
+
+
+        <div class="col-xs-7 col-sm-8 description-search-page">
+
+          <h3>{{boat.name}}</h3>
+
+          <h4>
+            Sailing Yacht, 2012, 40
+            <span translate="">feet</span>
+          </h4>
+
+          <div class="boat-description">
+
+            <ul>
+
+              <li>
+                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span ng-bind-html="item.city + ', ' + item.country">{{boat.city}}, {{boat.country}}</span>
+              </li>
+
+              <li ng-show="item.charter_type != ''" class="">
+                <i class="fa fa-fw fa-anchor"></i> {{boat.charter_type}}
+              </li>
+
+              <li>
+                <i class="fa fa-fw fa-bed"></i>
+                <span>
+                                        {{boat.cabins}}
+                                        <span translate="" translate-n="item.cabins" translate-plural="cabins">cabins</span>
+                </span>
+              </li>
+
+              <li>
+                <i style="margin-right: -0.35em; " class="fa fa-male "></i>
+                <i style="margin-right: 4px; " class="fa fa-fw fa-female"></i>
+                <span>
+                                        
+                                        {{boat.heads}} <span translate="">heads</span>
+                </span>
+              </li>
+
+            </ul>
+
+            <div class="search-page-rating" ng-show="item.reviewCount > 0">
+              <span uib-rating="" ng-model="item.rating" max="5" read-only="true" class="ng-pristine ng-untouched ng-valid ng-not-empty"><span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-valuetext="four">
+    <!----><span ng-repeat-start="r in range track by $index" class="sr-only">(*)</span>
+              <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon glyphicon-star" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                ng-attr-title="<%r.title%>" title="one"></i>
+              <!----><span ng-repeat-start="r in range track by $index" class="sr-only">(*)</span>
+              <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon glyphicon-star" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                ng-attr-title="<%r.title%>" title="two"></i>
+              <!----><span ng-repeat-start="r in range track by $index" class="sr-only">(*)</span>
+              <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon glyphicon-star" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                ng-attr-title="<%r.title%>" title="three"></i>
+              <!----><span ng-repeat-start="r in range track by $index" class="sr-only">(*)</span>
+              <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon glyphicon-star" ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                ng-attr-title="<%r.title%>" title="four"></i>
+              <!----><span ng-repeat-start="r in range track by $index" class="sr-only">( )</span>
+              <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon glyphicon-star-empty"
+                ng-class="$index < value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')"
+                ng-attr-title="<%r.title%>" title="five"></i>
+              <!---->
+              </span>
+              </span>
+              <p style="display: inline;text-decoration: underline;">
+                2
+                <span translate="" translate-n="item.reviewCount" translate-plural="reviews">reviews</span>
+              </p>
+            </div>
+
+          </div>
+
+          <strong>
+							<span class="newPrice">EUR {{boat.price*(1-boat.discounts)}}</span>
+
+								<br>
+
+							<!----><span class="discountPrice" ng-if="item.discounts != null &amp;&amp; item.discounts.percentage > 0">
+								<span>EUR {{boat.price}}</span>&nbsp;
+							</span><!---->
+
+							<!----><span class="discountAmount" ng-if="item.discounts != null &amp;&amp; item.discounts.percentage > 0"> {{(boat.discounts)*100}}% <span translate="">discount</span></span><!---->
+
+								<!----><br ng-if="item.discounts != null &amp;&amp; item.discounts.percentage > 0"><!---->
+
+							<span class="newPriceDescription"> 1 week <span translate="">(excl. equipments)</span></span></strong>
+
+
+
+          <!---->
+
+        </div>
+
+
+        <a ui-sref="boat({slug:item.slug})" href="/en/boat/judita-%252838%2529-1494506560107170"></a>
+
+      </div>
+
+    </div>
+  </div>
+</div>

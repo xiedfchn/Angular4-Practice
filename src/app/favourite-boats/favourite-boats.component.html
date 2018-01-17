@@ -1,0 +1,464 @@
+<div class="container">
+
+	<form ng-submit="save()" name="form" novalidate="" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max ng-valid-step ng-valid-minlength ng-valid-maxlength">
+
+		<div class="col-xs-12">
+
+			<!---->
+
+			<hr style="margin-top:10px;">
+
+			<div class="title-wrapper" style="margin-bottom:20px;">
+
+					<h3 translate="" style="font-weight:bold;">How do you want to rent out your boat?</h3>
+
+					<p translate="">In order to give you the best experience on Tubbber we would like to know in what kind of way you want to rent out your boat.</p>
+
+			</div>
+
+			<!-- START OF STEP 1: Charter type -->
+
+<div class="admin-wrapper">
+			<div class="row">
+						<div class="col-xs-12" style="margin-top:30px;margin-bottom:30px;">
+
+							<div class="col-xs-12 col-md-3">
+								<div class="listing-option link" id="bareboat" ng-click="changeCharterType('#bareboat', 1)">
+									<h4 translate="">Bareboat</h4>
+									<p translate="">No or optional skipper.</p>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-md-3">
+								<div class="listing-option link" id="skipper" ng-click="changeCharterType('#skipper', 2)">
+									<h4 translate="">Skippered</h4>
+									<p translate="">A skipper is always included.</p>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-md-3">
+								<div class="listing-option link" id="crewed" ng-click="changeCharterType('#crewed', 3)">
+									<h4 translate="">Crewed</h4>
+									<p translate="">More than just a skipper</p>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-md-3">
+								<div class="listing-option link" id="cabin" ng-click="changeCharterType('#cabin', 4)">
+									<h4 translate="">Cabin</h4>
+									<p translate="">Cabin or seat renting</p>
+								</div>
+							</div>
+
+						</div>
+
+				<div class="col-xs-12 ng-hide" ng-show="addSkipperBtn">
+					<div class="col-md-3 ng-hide" ng-show="showRemoveSkipperBtn">
+						<strong>Skipper:</strong>
+					</div>
+					<div class="col-md-3 ng-hide" ng-show="boat.skipper_charge_hour > 0">
+						<span translate="">Skipper charge per hour</span>: 
+					</div>
+					<div class="col-md-3 ng-hide" ng-show="boat.skipper_charge_day > 0">
+						<span translate="">Skipper charge per day</span>: 
+					</div>
+					<div class="col-md-3 ng-hide" ng-show="boat.skipper_charge_week > 0">
+						<span translate="">Skipper charge per week</span>: 
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div ng-show="addSkipperBtn" ng-hide="showRemoveSkipperBtn" class="">
+						<button ng-click="addSkipper()" type="button" class="button-nostyle">
+							<span translate="" style="color:rgba(13, 98, 49, 1);">Add a skipper</span>
+						</button>
+					</div>
+					<div ng-show="showRemoveSkipperBtn" class="ng-hide">
+						<button ng-click="deleteSkipper()" type="button" class="button-nostyle">
+							<span translate="" style="color:rgba(255, 138, 128, 1);">Remove</span>
+						</button>
+					</div>
+				</div>
+			</div>
+</div>
+
+			<!-- END OF STEP 1 -->
+
+			<!-- START OF STEP 2: Basic info -->
+
+			<div class="admin-wrapper">
+
+				<div class="col-xs-12">
+
+						<h4 style="font-weight:bold;" translate="">Basic information</h4>
+
+					<hr>
+
+					<div class="row">
+
+						<div class="col-xs-12 col-md-4">
+
+							<div class="form-group" ng-class="{'has-error': hasError('boat_type_id', 'required')}">
+								<label class="control-label" translate="">Boat type</label>
+
+								<div class="input-group">
+									<select class="form-control fa-select ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="boat.boat_type_id" name="boat_type_id" ng-options="type.id as (type.name | translateOrDefault:currentLanguage) for type in boatTypes" required=""><option value="" translate="" selected="selected">Select a boat type</option><option label="Sailing Yacht" value="number:32">Sailing Yacht</option><option label="Catamaran" value="number:1">Catamaran</option><option label="Motor Yacht" value="number:19">Motor Yacht</option><option label="Sailboat" value="number:31">Sailboat</option><option label="Sloop" value="number:35">Sloop</option><option label="Openboat" value="number:52">Openboat</option><option label="Motorboat" value="number:20">Motorboat</option><option label="Gulet" value="number:44">Gulet</option><option label="Rubber boat (R.I.B.)" value="number:49">Rubber boat (R.I.B.)</option><option label="Luxury motor yacht" value="number:46">Luxury motor yacht</option><option label="Kayak" value="number:16">Kayak</option><option label="Houseboat" value="number:10">Houseboat</option><option label="Rib" value="number:59">Rib</option><option label="Motorsailer" value="number:50">Motorsailer</option><option label="Power catamaran" value="number:48">Power catamaran</option><option label="Schooner" value="number:58">Schooner</option><option label="Jet ski" value="number:14">Jet ski</option><option label="Saloonboat" value="number:45">Saloonboat</option><option label="Canoe" value="number:2">Canoe</option><option label="Mega Yacht" value="number:18">Mega Yacht</option><option label="Wooden yacht" value="number:51">Wooden yacht</option><option label="Jetski" value="number:57">Jetski</option><option label="Tall Ship" value="number:43">Tall Ship</option><option label="Cruise ship" value="number:6">Cruise ship</option><option label="Ice boat" value="number:12">Ice boat</option><option label="Inflatable boat" value="number:13">Inflatable boat</option><option label="Riverboat" value="number:28">Riverboat</option><option label="Gondola" value="number:9">Gondola</option><option label="Luxury sailing yacht" value="number:47">Luxury sailing yacht</option><option label="Fireboat" value="number:8">Fireboat</option><option label="Electric boat" value="number:7">Electric boat</option><option label="Trawler" value="number:40">Trawler</option><option label="Trimaran" value="number:41">Trimaran</option><option label="Hovercraft" value="number:11">Hovercraft</option><option label="Airboat" value="number:5">Airboat</option><option label="Banana boat" value="number:4">Banana boat</option><option label="Bathtub Boat" value="number:3">Bathtub Boat</option><option label="Junk" value="number:15">Junk</option><option label="Barbeque boat" value="number:42">Barbeque boat</option><option label="Narrowboat" value="number:21">Narrowboat</option><option label="Optimist" value="number:22">Optimist</option><option label="Police boat" value="number:23">Police boat</option><option label="Pram" value="number:24">Pram</option><option label="Punt" value="number:25">Punt</option><option label="Reed boat" value="number:26">Reed boat</option><option label="Runabout" value="number:30">Runabout</option><option label="Sampan" value="number:33">Sampan</option><option label="Scow" value="number:34">Scow</option><option label="Steam boat" value="number:36">Steam boat</option><option label="Submarine" value="number:37">Submarine</option><option label="Tender" value="number:38">Tender</option><option label="Towboat" value="number:39">Towboat</option><option label="Lifeboat" value="number:17">Lifeboat</option><option label="Rowboat" value="number:29">Rowboat</option></select>
+								</div>
+
+								<p ng-show="hasError('boat_type_id', 'required')" class="help-block ng-hide" translate="">Required</p>
+							</div>
+
+						</div>
+
+						<!-- Building year -->
+						<div class="col-xs-12 col-md-4">
+							<div class="form-group" ng-class="{'has-error': hasError('year_manufactured', 'required') || hasError('year_manufactured', 'min')}">
+								<label class="control-label">
+									<span translate="">Building year</span>
+								</label>
+
+								<div class="input-group">
+									<input type="number" min="1950" max="" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min ng-valid-max ng-valid-required" name="year_manufactured" ng-model="boat.year_manufactured" required="">
+
+									<p ng-show="hasError('year_manufactured', 'required')" class="help-block ng-hide" translate="">Required</p>
+									<p ng-show="hasError('year_manufactured', 'min')" class="help-block ng-hide" translate="">The minimum year is 1950</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-4">
+							<div class="form-group" ng-class="{'has-error': hasError('registration_number', 'required')}">
+								<label class="control-label">
+									<span translate="">Register number</span>
+								</label>
+
+								<div class="input-group">
+									<input type="text" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" placeholder="139394848" name="registration_number" ng-model="boat.registration_number" required="">
+								</div>
+
+								<p ng-show="hasError('registration_number', 'required')" class="help-block ng-hide" translate="">Required</p>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+
+
+						<!-- Brand -->
+						<div class="col-xs-12 col-md-4">
+
+							<div class="form-group has-error" ng-class="{'has-error': boat.brand_id == undefined || boat.brand_id == null}">
+								<label class="control-label">
+									<span translate="">Brand</span>
+								</label>
+
+								<div class="input-group">
+									<input type="text" ng-model="boat.brand" placeholder="Brand" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-change="searchBrand()" required="" autocomplete="off">
+
+									<div class="results ng-hide" ng-show="brandResults.length">
+										<!---->
+									</div>
+
+									<p ng-show="boat.brand_id == undefined || boat.brand_id == null" class="help-block" translate="">Required</p>
+
+								</div>
+
+							</div>
+						</div>
+
+						<!-- Boat model -->
+						<div class="col-xs-12 col-md-4">
+
+							<div class="form-group" ng-class="{'has-error': hasError('boat_model', 'required')}">
+								<label class="control-label">
+									<span translate="">Boat model</span>
+								</label>
+								<div class="input-group">
+									<input type="text" placeholder="37 Cruiser" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="boat.boat_model" ng-change="searchModel()" required="" name="boat_model" autocomplete="off">
+
+									<div class="results ng-hide" ng-show="modelResults.length">
+										<!---->
+									</div>
+
+									<p ng-show="hasError('boat_model', 'required')" class="help-block ng-hide" translate="">Required</p>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-4">
+
+							<div class="form-group" ng-class="{'has-error': hasError('name', 'required')}">
+								<label class="control-label">
+									<span translate="">Boat name</span>
+								</label>
+
+								<div class="input-group">
+									<input type="text" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="name" placeholder="Name of your boat" ng-model="boat.name" required="">
+								</div>
+								<p ng-show="hasError('name', 'required')" class="help-block ng-hide" translate="">Required</p>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<!-- END OF STEP 1 -->
+
+
+			<div class="admin-wrapper">
+
+				<div class="row">
+
+					<div class="col-xs-12">
+
+						<h4 translate="" style="font-weight:bold;">Advanced information</h4>
+
+						<hr>
+
+						<div class="col-xs-12 col-md-3">
+							<div class="form-group" ng-class="{'has-error': hasError('guests', 'required') || hasError('guests', 'min')}">
+								<label class="control-label">
+									<span translate="">Guest capacity</span>
+								</label>
+								<div class="input-group">
+									<input ng-model="boat.guests" type="number" name="guests" placeholder="12" min="0" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" required="">
+									<div class="input-group-addon">
+										<span translate="" translate-n="boat.guests" translate-plural="guests">guests</span>
+									</div>
+								</div>
+								<p ng-show="hasError('guests', 'required')" class="help-block ng-hide" translate="">Required</p>
+								<p ng-show="hasError('guests', 'min')" class="help-block ng-hide" translate="">Minimum value is 0</p>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-3">
+							<div class="form-group" ng-class="{'has-error': hasError('cabins', 'required') || hasError('cabins', 'min')}">
+								<label class="control-label">
+									<span translate="" translate-n="2" translate-plural="Cabins">Cabins</span>
+								</label>
+								<div class="input-group">
+									<input ng-model="boat.cabins" type="number" name="cabins" placeholder="3" min="0" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" required="">
+									<div class="input-group-addon">
+										<span translate="" translate-n="boat.cabins" translate-plural="cabins">cabins</span>
+									</div>
+								</div>
+								<p ng-show="hasError('cabins', 'required')" class="help-block ng-hide" translate="">Required</p>
+								<p ng-show="hasError('cabins', 'min')" class="help-block ng-hide" translate="">Minimum value is 0</p>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-3">
+							<div class="form-group" ng-class="{'has-error': hasError('beds', 'required') || hasError('beds', 'min')}">
+								<label class="control-label">
+									<span translate="">Beds</span>
+								</label>
+								<div class="input-group">
+									<input ng-model="boat.beds" type="number" name="beds" placeholder="3" min="0" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" required="">
+									<div class="input-group-addon" translate="">beds</div>
+								</div>
+								<p ng-show="hasError('beds', 'required')" class="help-block ng-hide" translate="">Required</p>
+								<p ng-show="hasError('beds', 'min')" class="help-block ng-hide" translate="">Minimum value is 0</p>
+							</div>
+						</div>
+
+
+						<div class="col-xs-12 col-md-3">
+							<div class="form-group" ng-class="{'has-error': hasError('bathrooms', 'required') || hasError('bathrooms', 'min')}">
+								<label class="control-label">
+									<span translate="">Toilets</span>
+								</label>
+								<div class="input-group">
+									<input ng-model="boat.bathrooms" type="number" name="bathrooms" placeholder="2" min="0" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" required="">
+									<div class="input-group-addon">toilets</div>
+								</div>
+								<p ng-show="hasError('bathrooms', 'required')" class="help-block ng-hide" translate="">Required</p>
+								<p ng-show="hasError('bathrooms', 'min')" class="help-block ng-hide" translate="">Minimum value is 0</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+				<div class="row">
+
+					<div class="col-xs-12">
+						<!-- Steering type -->
+						<div class="col-xs-12 col-md-3">
+
+							<div class="form-group" ng-class="{'has-error': hasError('steering_type_id', 'required')}">
+								<label class="control-label" translate="">Steering type</label>
+
+								<div class="input-group">
+									<select class="form-control fa-select ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="boat.steering_type_id" name="steering_type_id" ng-options="option.id as (option.values | translateOrDefault:currentLanguage) for option in steeringTypes" required=""><option value="" translate="" selected="selected">Select a steering type</option><option label="2 Steering Wheels" value="number:1">2 Steering Wheels</option><option label="Joystick " value="number:2">Joystick </option><option label="Steering Wheel " value="number:3">Steering Wheel </option><option label="Tiller steereing" value="number:4">Tiller steereing</option></select>
+								</div>
+								<p ng-show="hasError('steering_type_id', 'required')" class="help-block ng-hide" translate="">Required</p>
+							</div>
+
+						</div>
+
+						<div class="col-xs-12 col-md-3">
+
+							<div class="form-group" ng-class="{'has-error': hasError('length', 'required') || hasError('length', 'min')}">
+								<label class="control-label">
+								<span translate="">Length (ft)</span>&nbsp;<!---->
+								</label>
+								<div class="input-group">
+									<input type="number" placeholder="38 for example" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" ng-model="boat.length" min="0" name="length" required="">
+									<div class="input-group-addon">feet</div>
+								</div>
+								<p ng-show="hasError('length', 'required')" class="help-block ng-hide" translate="">Required</p>
+								<p ng-show="hasError('length', 'min')" class="help-block ng-hide" translate="">Minimum value is 0</p>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-3">
+
+							<div class="form-group" ng-class="{'has-error': hasError('beam', 'required') || hasError('beam', 'min')}">
+								<label class="control-label">
+									<span translate="">Beam (ft)</span>
+								</label>
+								<div class="input-group">
+									<input type="number" placeholder="12 for example" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" ng-model="boat.beam" min="0" name="beam" required="">
+									<div class="input-group-addon">feet</div>
+								</div>
+								<p ng-show="hasError('beam', 'required')" class="help-block ng-hide" translate="">Required</p>
+								<p ng-show="hasError('beam', 'min')" class="help-block ng-hide" translate="">Minimum value is 0</p>
+							</div>
+						</div>
+						
+						<div class="col-xs-12 col-md-3">
+							<div class="form-group" ng-class="{'has-error': hasError('draft', 'required') || hasError('draft', 'min')}">
+								<label class="control-label">
+									<span translate="">Draft (m)</span>
+								</label>
+								<div class="input-group">
+									<input type="number" class="form-control ng-pristine ng-untouched ng-empty ng-valid-min ng-valid-step ng-invalid ng-invalid-required" ng-model="boat.draft" min="0" name="draft" step="0.01" required="">
+									<div class="input-group-addon">feet</div>
+								</div>
+								<p ng-show="hasError('draft', 'required')" class="help-block ng-hide" translate="">Required</p>
+								<p ng-show="hasError('draft', 'min')" class="help-block ng-hide" translate="">Minimum value is 0</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="admin-wrapper">
+
+
+				<div class="col-xs-12">
+
+					<h4 translate="" style="font-weight:bold;">Title and description</h4>
+
+					<hr>
+
+				</div>
+				<!-- Titel -->
+				<div class="form-group" ng-class="{'has-error': hasError('title', 'required') || hasError('title', 'minlength') || hasError('title', 'maxlength')}">
+					<label class="col-md-12 control-label">
+						<span translate="">Title</span>
+					</label>
+
+					<div class="col-xs-12 col-md-9">
+						<div class="input-group">
+							<input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength" ng-minlength="4" ng-maxlength="35" type="text" name="title" ng-model="boat.title" placeholder="Use a descriptive headline to catch sailors attention. Don't worry, you can change this later." required="" autocomplete="off">
+							<p ng-show="hasError('title', 'minlength')" class="help-block ng-hide" translate="">The title of your boat listing is too short!</p>
+							<p ng-show="hasError('title', 'maxlength')" class="help-block ng-hide" translate="">The title of your boat listing is too long!</p>
+							<p ng-show="hasError('title', 'required')" class="help-block ng-hide" translate="">This field is required</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Omschrijving -->
+				<div class="form-group" ng-class="{'has-error': hasError('description', 'required') || hasError('description', 'minlength')}">
+					<label class="col-md-12 control-label">
+						<span translate="">Description</span>
+					</label>
+
+					<div class="col-xs-12 col-md-9">
+						<div class="input-group">
+							<textarea rows="7" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength" name="description" ng-model="boat.description" placeholder="Tell travelers about your boat and the equipment, closeness to airport and restaurants. Are you a great skipper? Tell them that too!" required="" ng-minlength="50"></textarea>
+							<p ng-show="hasError('description', 'required')" class="help-block ng-hide" translate="">Required</p>
+							<p ng-show="hasError('description', 'minlength')" translate="" class="ng-hide">The description of your boat is too short!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="admin-wrapper">
+
+				<div class="col-xs-12">
+					<h4 translate="" style="font-weight:bold;">Insurance</h4>
+
+					<hr>
+				</div>
+
+
+				<!-- Currency type -->
+				<div class="form-group" ng-class="{'has-error': hasError('currency_id', 'required') || hasError('boat_value', 'required')}">
+					<label class="col-xs-12 control-label">
+						<span translate="">Value of the boat</span>
+					</label>
+					<div class="col-xs-12 col-md-2">
+						<div class="input-group">
+							<select class="form-control fa-select ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" ng-model="boat.currency_id" name="currency_id" ng-options="currency.id as currency.shortcode for currency in currencies" required=""><option value="" translate="">Select a currency</option><option label="AUD" value="number:1">AUD</option><option label="BRL" value="number:2">BRL</option><option label="CAD" value="number:3">CAD</option><option label="CHF" value="number:4">CHF</option><option label="DKK" value="number:5">DKK</option><option label="EUR" value="number:6" selected="selected">EUR</option><option label="GBP" value="number:7">GBP</option><option label="HKD" value="number:8">HKD</option><option label="HUF" value="number:9">HUF</option><option label="INR" value="number:10">INR</option><option label="JPY" value="number:11">JPY</option><option label="MXN" value="number:12">MXN</option><option label="NOK" value="number:13">NOK</option><option label="NZD" value="number:14">NZD</option><option label="SEK" value="number:15">SEK</option><option label="USD" value="number:16">USD</option><option label="ZAR" value="number:17">ZAR</option></select>
+						</div>
+						<p ng-show="hasError('currency_id', 'required')" class="help-block ng-hide" translate="">Required</p>
+					</div>
+					<div class="col-xs-9 col-md-10">
+						<div class="input-group">
+							<input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="boat.boat_value" name="boat_value" placeholder="Value of the boat" type="number" required="">
+							<p ng-show="hasError('boat_value', 'required')" class="help-block ng-hide" translate="">Required</p>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="col-xs-12">
+
+					<div class="form-group" ng-class="{'has-error': hasError('legal_permission', 'required')}">
+						<p class="error ng-hide" ng-show="legal_message">
+							<i class="fa fa-times"></i> <span translate="">You must have the legal permission to charter your boat to be able to submit this form.</span>
+						</p>
+						<p>
+
+							<label class="control-label">
+								<input type="checkbox" value="1" ng-model="legal_permission" name="legal_permission" required="" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+								<span translate="">I confirm that I have the legal permission to charter this boat</span>
+						</label></p><p ng-show="hasError('legal_permission', 'required')" class="help-block ng-hide" translate="">Required</p>
+						
+
+						<p></p>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error': hasError('agreed', 'required')}">
+						<p id="terms-p">
+							<label class="control-label">
+								<input type="checkbox" value="1" ng-model="agreed" name="agreed" required="" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+								<span translate="">I agree to the</span>
+								<a ui-sref="terms" target="_blank" translate="" href="/en/terms">Terms of use</a>
+						</label></p><p ng-show="hasError('agreed', 'required')" class="help-block ng-hide" translate="">Required</p>
+						
+						<p></p>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="admin-wrapper-grey">
+				<button class="button glow" type="submit" translate="">Save</button>
+			</div>
+
+		</div>
+	</form>
+
+</div>

@@ -1,0 +1,388 @@
+<div class="home-wrapper">
+    <div class="homeOverlay"></div>
+    <div class="header-top-wrapper container">
+        <div class="col-xs-12 col-md-12">
+
+            <h1 translate="">RENT A BOAT FROM THE LOCAL OWNER</h1>
+
+            <p translate="">We facilitate a quick, convenient and safe way to rent or rent out a boat</p>
+
+        </div>
+        <div class="home-search-wrapper col-xs-12" ng-class="{'mobile-main-active':ctrl.clicked}" data-role="popup" style="text-align: center;">
+
+            <form class="search-form ng-pristine ng-valid" (ngSubmit)="onSubmit()">
+
+                <a href="#" ng-click="ctrl.clicked = !ctrl.clicked" class="mobile-closing-button visible-xs">
+                    <span translate="">Close</span>
+                </a>
+
+                <div class="col-xs-12 col-sm-4">
+                    <app-destination-picker (datePicked)="datePicked($event)"></app-destination-picker>
+                </div>
+
+                <div class="col-xs-12 col-sm-2">
+                    <app-calendar></app-calendar>
+                </div>
+
+                <div class="col-xs-6 col-sm-2" style="border-right: 1px solid #f2f2f2;">
+                    <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" [(ngModel)]="search.days" name="days" >
+                        <option *ngFor="let day of days" [value]="day">{{day}} days</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-6 col-sm-2">
+                    <select class="form-control fa-select ng-pristine ng-untouched ng-valid ng-empty"  [(ngModel)]="search.guests"  name="guests" >
+                        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-2">
+                    <button type="submit" class="" id="search_button">
+                        <span ng-hide="show">Search</span>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid homeIntroLogos">
+    <div>
+        <img src="https://livetubbber.s3.amazonaws.com/images/site/YachtPool.png" alt="Yacht-pool logo" ng-src="https://livetubbber.s3.amazonaws.com/images/site/YachtPool.png">
+        <div>
+            <h4 translate="">Insured with Yacht-pool</h4>
+            <p translate="">Rent out your boat safely with our Yacht-Pool insurances.</p>
+        </div>
+    </div>
+    <div>
+        <!---->
+        <img ng-if="currentLanguage!='de'" src="https://livetubbber.s3.amazonaws.com/images/site/LogoSGR.png" ng-src="https://livetubbber.s3.amazonaws.com/images/site/LogoSGR.png"
+            alt="SGR Logo">
+        <!---->
+        <div>
+            <h4 translate="">Financially secured with SGR</h4>
+            <p translate="">Don't worry about your money with SGR-guarantee</p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" style="margin-top:20px;">
+            <h2 translate="">Popular locations</h2>
+            <p translate="">View some of our users most beloved locations</p>
+            <hr>
+        </div>
+    </div>
+    <ul class="row">
+        <!---->
+        <li class="col-xs-6 col-sm-4" ng-repeat="item in ctrl.populars">
+            <div class="featuredBoats">
+                <img alt="Back up image for places" ng-src="https://livetubbber.s3.amazonaws.com/images/locations/s2_Zadar_1474359314.jpg"
+                    fallback-image="https://livetubbber.s3.amazonaws.com/images/site/backupPlacesImage.jpeg" src="https://livetubbber.s3.amazonaws.com/images/locations/s2_Zadar_1474359314.jpg">
+                <div>
+                    <h4>Croatia</h4>
+                </div>
+                <a ui-sref="searchGet(item.url)" ng-click="ctrl.loadingDest()" href="/en/search?city=Tonnarella"></a>
+            </div>
+        </li>
+        <!---->
+        <li class="col-xs-6 col-sm-4" ng-repeat="item in ctrl.populars">
+            <div class="featuredBoats">
+                <img alt="Back up image for places" ng-src="https://livetubbber.s3.amazonaws.com/images/locations/s2_nederland-web_1474367234.jpg"
+                    fallback-image="https://livetubbber.s3.amazonaws.com/images/site/backupPlacesImage.jpeg" src="https://livetubbber.s3.amazonaws.com/images/locations/s2_nederland-web_1474367234.jpg">
+                <div>
+                    <h4>Netherlands</h4>
+                </div>
+                <a ui-sref="searchGet(item.url)" ng-click="ctrl.loadingDest()" href="/en/search?location=Netherlands"></a>
+            </div>
+        </li>
+        <!---->
+        <li class="col-xs-6 col-sm-4" ng-repeat="item in ctrl.populars">
+            <div class="featuredBoats">
+                <img alt="Back up image for places" ng-src="https://livetubbber.s3.amazonaws.com/images/locations/s2_yacht_charter_Greece_1473423303.jpg"
+                    fallback-image="https://livetubbber.s3.amazonaws.com/images/site/backupPlacesImage.jpeg" src="https://livetubbber.s3.amazonaws.com/images/locations/s2_yacht_charter_Greece_1473423303.jpg">
+                <div>
+                    <h4>Greece</h4>
+                </div>
+                <a ui-sref="searchGet(item.url)" ng-click="ctrl.loadingDest()" href="/en/search?location=Greece"></a>
+            </div>
+        </li>
+        <!---->
+        <li class="col-xs-6 col-sm-4" ng-repeat="item in ctrl.populars">
+            <div class="featuredBoats">
+                <img alt="Back up image for places" ng-src="https://livetubbber.s3.amazonaws.com/images/locations/s2_rsz_cagliari_stad_1494532994.jpg"
+                    fallback-image="https://livetubbber.s3.amazonaws.com/images/site/backupPlacesImage.jpeg" src="https://livetubbber.s3.amazonaws.com/images/locations/s2_rsz_cagliari_stad_1494532994.jpg">
+                <div>
+                    <h4>Italy</h4>
+                </div>
+                <a ui-sref="searchGet(item.url)" ng-click="ctrl.loadingDest()" href="/en/search?location=Italy"></a>
+            </div>
+        </li>
+        <!---->
+        <li class="col-xs-6 col-sm-4" ng-repeat="item in ctrl.populars">
+            <div class="featuredBoats">
+                <img alt="Back up image for places" ng-src="https://livetubbber.s3.amazonaws.com/images/locations/s2_ibiza-hotel-elpuerto_1485792391.jpg"
+                    fallback-image="https://livetubbber.s3.amazonaws.com/images/site/backupPlacesImage.jpeg" src="https://livetubbber.s3.amazonaws.com/images/locations/s2_ibiza-hotel-elpuerto_1485792391.jpg">
+                <div>
+                    <h4>Ibiza</h4>
+                </div>
+                <a ui-sref="searchGet(item.url)" ng-click="ctrl.loadingDest()" href="/en/search?location=Ibiza"></a>
+            </div>
+        </li>
+        <!---->
+        <li class="col-xs-6 col-sm-4" ng-repeat="item in ctrl.populars">
+            <div class="featuredBoats">
+                <img alt="Back up image for places" ng-src="https://livetubbber.s3.amazonaws.com/images/locations/s2_lefkada_1479723230.jpg"
+                    fallback-image="https://livetubbber.s3.amazonaws.com/images/site/backupPlacesImage.jpeg" src="https://livetubbber.s3.amazonaws.com/images/locations/s2_lefkada_1479723230.jpg">
+                <div>
+                    <h4>Lefkada</h4>
+                </div>
+                <a ui-sref="searchGet(item.url)" ng-click="ctrl.loadingDest()" href="/en/search?location=Lefkada"></a>
+            </div>
+        </li>
+        <!---->
+    </ul>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="homeIntroSteps">
+                <div>
+                    <div class="col-xs-12 col-md-12">
+                        <img alt="Registration icon" data-ng-src="https://livetubbber.s3.amazonaws.com/images/site/RegistrationIcon.png" src="https://livetubbber.s3.amazonaws.com/images/site/RegistrationIcon.png"></div>
+                    <div class="col-xs-12 col-md-12">
+                        <h4 translate="">Registration is easy</h4>
+                        <p translate="">To be able to rent or rent out your boat, you have to sign up. This can easily be done through Facebook,
+                            Google+, or just your email address.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-xs-12 col-md-12">
+                        <img alt="Direct contact icon" data-ng-src="https://livetubbber.s3.amazonaws.com/images/site/DirectContactIcon.png" src="https://livetubbber.s3.amazonaws.com/images/site/DirectContactIcon.png"></div>
+                    <div class="col-xs-12 col-md-12">
+                        <h4 translate="">Direct contact with renter or owner</h4>
+                        <p translate="">There is no one that knows more about the boat than the owner. That is why the owner and renter are
+                            in direct contact.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-xs-12 col-md-12">
+                        <img alt="Safety icon" data-ng-src="https://livetubbber.s3.amazonaws.com/images/site/Safety.png" src="https://livetubbber.s3.amazonaws.com/images/site/Safety.png"></div>
+                    <div class="col-xs-12 col-md-12">
+                        <h4 translate="">Always insured and secure booking</h4>
+                        <p translate="">Tubbber checks every boat and we make sure all boats are insured. We're also an SGR member and process
+                            payments through Adyen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" style="margin-top:20px;">
+            <h2 translate="">Recommended boats</h2>
+            <hr>
+        </div>
+        <!---->
+        <!---->
+        <div class="col-xs-6 col-sm-4" ng-repeat="boat in ctrl.featuredBoats" ng-if="boat.location != '' &amp;&amp; boat.price != 0">
+            <div class="featuredBoats">
+                <img alt="Boat image" ng-src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_3-1200x801_1492087859.jpg" fallback-image="https://placehold.it/400x225/2e3a4b/ffffff?text=Tubbber"
+                    src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_3-1200x801_1492087859.jpg">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Navetta 33</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <p class="smallGreyText">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>Trogir</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <p>
+                                <span translate="">From</span>HUF 4847089.80
+                                <!---->
+                                <!---->
+                                <span translate="" ng-if="boat.pricePeriod == 'day'">per day</span>
+                                <!---->
+                                <!---->
+                                <!---->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a ui-sref="boat({slug: boat.slug})" href="/en/boat/seventh-sense-1494506567738893"></a>
+            </div>
+        </div>
+        <!---->
+        <!---->
+        <!---->
+        <div class="col-xs-6 col-sm-4" ng-repeat="boat in ctrl.featuredBoats" ng-if="boat.location != '' &amp;&amp; boat.price != 0">
+            <div class="featuredBoats">
+                <img alt="Boat image" ng-src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_Cata_sail_-_Areal-66_1481545595.jpg"
+                    fallback-image="https://placehold.it/400x225/2e3a4b/ffffff?text=Tubbber" src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_Cata_sail_-_Areal-66_1481545595.jpg">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Lagoon 450 - 4 cab.</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <p class="smallGreyText">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>Trogir</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <p>
+                                <span translate="">From</span>HUF 313832.21
+                                <!---->
+                                <!---->
+                                <span translate="" ng-if="boat.pricePeriod == 'day'">per day</span>
+                                <!---->
+                                <!---->
+                                <!---->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a ui-sref="boat({slug: boat.slug})" href="/en/boat/alba-dog-catamaran-sailing-holiday-croatia-1494506567672283"></a>
+            </div>
+        </div>
+        <!---->
+        <!---->
+        <!---->
+        <div class="col-xs-6 col-sm-4" ng-repeat="boat in ctrl.featuredBoats" ng-if="boat.location != '' &amp;&amp; boat.price != 0">
+            <div class="featuredBoats">
+                <img alt="Boat image" ng-src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_77a08154740d1064adec9bf212f054d8_1475065814.jpeg"
+                    fallback-image="https://placehold.it/400x225/2e3a4b/ffffff?text=Tubbber" src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_77a08154740d1064adec9bf212f054d8_1475065814.jpeg">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>NOMAG</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <p class="smallGreyText">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>Amsterdam</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <p>
+                                <span translate="">From</span>HUF 58214.10
+                                <!---->
+                                <span translate="" ng-if="boat.pricePeriod == 'hour'">per hour</span>
+                                <!---->
+                                <!---->
+                                <!---->
+                                <!---->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a ui-sref="boat({slug: boat.slug})" href="/en/boat/electric-sloop-rental-amsterdam-1494506571645617"></a>
+            </div>
+        </div>
+        <!---->
+        <!---->
+        <!---->
+        <div class="col-xs-6 col-sm-4" ng-repeat="boat in ctrl.featuredBoats" ng-if="boat.location != '' &amp;&amp; boat.price != 0">
+            <div class="featuredBoats">
+                <img alt="Boat image" ng-src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_IMG-20160816-WA0013_1481721057.jpg"
+                    fallback-image="https://placehold.it/400x225/2e3a4b/ffffff?text=Tubbber" src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_IMG-20160816-WA0013_1481721057.jpg">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Grachtenboot</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <p class="smallGreyText">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>Groningen</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <p>
+                                <span translate="">From</span>HUF 10723.65
+                                <!---->
+                                <span translate="" ng-if="boat.pricePeriod == 'hour'">per hour</span>
+                                <!---->
+                                <!---->
+                                <!---->
+                                <!---->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a ui-sref="boat({slug: boat.slug})" href="/en/boat/borrelsloep-geschikt-voor-12-pers.-1495103452987680"></a>
+            </div>
+        </div>
+        <!---->
+        <!---->
+        <!---->
+        <div class="col-xs-6 col-sm-4" ng-repeat="boat in ctrl.featuredBoats" ng-if="boat.location != '' &amp;&amp; boat.price != 0">
+            <div class="featuredBoats">
+                <img alt="Boat image" ng-src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_952667730000102246_Anna_Katharina_ext_5_1478083821.jpg"
+                    fallback-image="https://placehold.it/400x225/2e3a4b/ffffff?text=Tubbber" src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_952667730000102246_Anna_Katharina_ext_5_1478083821.jpg">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Jeanneau Sun Odyssey 54DS</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <p class="smallGreyText">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>Palma</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <p>
+                                <span translate="">From</span>HUF 1807701.00
+                                <!---->
+                                <!---->
+                                <!---->
+                                <span translate="" ng-if="boat.pricePeriod == 'week'">per week</span>
+                                <!---->
+                                <!---->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a ui-sref="boat({slug: boat.slug})" href="/en/boat/anna-katharina-1494506573121804"></a>
+            </div>
+        </div>
+        <!---->
+        <!---->
+        <!---->
+        <div class="col-xs-6 col-sm-4" ng-repeat="boat in ctrl.featuredBoats" ng-if="boat.location != '' &amp;&amp; boat.price != 0">
+            <div class="featuredBoats">
+                <img alt="Boat image" ng-src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_Bavaria40_1487063117.jpg" fallback-image="https://placehold.it/400x225/2e3a4b/ffffff?text=Tubbber"
+                    src="https://livetubbber.s3.amazonaws.com/images/boat_images/s4_Bavaria40_1487063117.jpg">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Bavaria 40 Cruiser</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <p class="smallGreyText">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>Šibenik</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <p>
+                                <span translate="">From</span>HUF 153195.00
+                                <!---->
+                                <!---->
+                                <!---->
+                                <span translate="" ng-if="boat.pricePeriod == 'week'">per week</span>
+                                <!---->
+                                <!---->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a ui-sref="boat({slug: boat.slug})" href="/en/boat/cabin-charter-special-1494506585988541"></a>
+            </div>
+        </div>
+        <!---->
+        <!---->
+    </div>
+</div>
+<div class="container-fluid homeBottomRent" style="background-image:url('https://livetubbber.s3.amazonaws.com/images/site/footerPicture_smaller.jpg');">
+    <div class="homeBottomOverlay"></div>
+    <div class="container">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <h2 translate="">Rent out your boat</h2>
+            <p translate="">Renting out your boat can be difficult at times and any damages can be frightening. We make sure that your boat
+                is insured when it's booked through Tubbber. We are always available to help you with renting out your boat.</p>
+            <a ui-sref="rentOutYourBoat" translate="" href="/en/let-your-boat">More about renting out your boat</a></div>
+    </div>
+</div>

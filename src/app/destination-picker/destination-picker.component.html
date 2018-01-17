@@ -1,0 +1,45 @@
+<div class="country-field">
+  <i class="fa fa-fw fa-location-arrow"></i>
+  <input class="locationHasValue" (click)="open()" placeholder="destination" value="{{destination}}" />
+</div>
+<div class="modal-countries"*ngIf="currentScreen == 'country'">
+  <div class="col-md-7">
+    <div class="searchBoxTitle">
+      <h4 style="margin-bottom: 0;" translate="">Countries</h4>
+      <hr>
+    </div>
+    <div class="countryContainer" >
+      <div *ngFor="let country of countries" (click)="onSelectCountry(country)">
+        <div class="country no-animate">{{country.country}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-countries" *ngIf="currentScreen == 'state'">
+  <div class="col-md-7">
+    <div class="searchBoxTitle">
+      <h4 style="margin-bottom: 0;" translate="">States</h4>
+      <hr>
+    </div>
+    <div class="countryContainer" >
+      <div class="country no-animate" (click)="close()">All states</div>
+      <div *ngFor="let state of slectedCountry.states" (click)="onSelectState(state)">
+        <div class="country no-animate">{{state.state}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-countries" *ngIf="currentScreen == 'city'">
+  <div class="col-md-7">
+    <div class="searchBoxTitle">
+      <h4 style="margin-bottom: 0;" translate="">Cities</h4>
+      <hr>
+    </div>
+    <div class="countryContainer" >
+      <div class="country no-animate" (click)="close()">All Cities</div>
+      <div *ngFor="let city of slectedState.cities" (click)="onSelectCity(city)">
+        <div class="country no-animate">{{city}}</div>
+      </div>
+    </div>
+  </div>
+</div>
