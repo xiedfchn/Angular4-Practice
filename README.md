@@ -1,7 +1,7 @@
 # Practice of Angular4
 
 
-## introduction
+## Features
 
 * Angular CLI
 * RESTful API
