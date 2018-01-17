@@ -1,10 +1,9 @@
-# PROJECTTUBBBER
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
+# Practice of Angular
 
 
 ## introduction
 
+* Angular CLI
 * RESTful API
 * Reusable clandar module
 * HTTP client  fetch and save data from a mock service, the in-memory web API
