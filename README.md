@@ -6,6 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## introduction
 
 RESTful API
+Reusable clandar module
+HTTP client  fetch and save data from a mock service, the in-memory web API
 
 
 ## Development server
