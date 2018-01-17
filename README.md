@@ -5,7 +5,7 @@
 
 * Angular CLI
 * RESTful API
-* Reusable clandar module
+* Reusable calendar  module
 * HTTP client  fetch and save data from a mock service, the in-memory web API
 
 
